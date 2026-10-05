@@ -60,40 +60,32 @@ they always stay accurate as time passes.
 
 ## 2. Initial Database Design
 
-For Check-in 1, I am starting with two tables: **Users** and
-**GroceryItem**. I plan to expand and normalize the database during
-Check-in 2 after identifying possible dependencies and problems in this
-initial design.
+For Check-in 1, I am starting with two tables: **Users** and **GroceryItem**. I plan to expand and normalize the database during Check-in 2 after identifying possible dependencies and problems in this initial design.
 
 ### Users
 
-  Column   Key           Description
-  -------- ------------- ------------------------------------------
-  UserID   Primary Key   Unique ID for a user
-  Name                   User's name
-  Email                  User's email (all emails will be unique)
+| Column | Key | Description |
+|---|---|---|
+| UserID | Primary Key | Unique ID for a user |
+| Name | | User's name |
+| Email | | User's email (all emails will be unique) |
 
 ### GroceryItem
 
-  Column           Key           Description
-  ---------------- ------------- --------------------------------
-  ItemID           Primary Key   Unique ID for a grocery item
-  UserID           Foreign Key   User who owns the item
-  ItemName                       Name of grocery
-  Category                       Grocery category
-  Quantity                       Number of items
-  PurchaseDate                   Date purchased
-  ExpirationDate                 Expiration date
-  Status                         Active, Consumed, or Discarded
+| Column | Key | Description |
+|---|---|---|
+| ItemID | Primary Key | Unique ID for a grocery item |
+| UserID | Foreign Key | User who owns the item |
+| ItemName | | Name of grocery |
+| Category | | Grocery category |
+| Quantity | | Number of items |
+| PurchaseDate | | Date purchased |
+| ExpirationDate | | Expiration date |
+| Status | | Active, Consumed, or Discarded |
 
-The relationship is **one-to-many**. One user can have multiple grocery
-items, while each grocery item belongs to one user. The `UserID` in the
-`GroceryItem` table is a foreign key that references `UserID` in the
-`Users` table.
+The relationship is **one-to-many**. One user can have multiple grocery items, while each grocery item belongs to one user. The `UserID` in the `GroceryItem` table is a foreign key that references `UserID` in the `Users` table.
 
-Status only records what the user did with the item (still has it, used
-it, or threw it away). It does not store `"Expired"`, because that is
-calculated from `ExpirationDate`.
+Status only records what the user did with the item (still has it, used it, or threw it away). It does not store `"Expired"`, because that is calculated from `ExpirationDate`.
 
 ------------------------------------------------------------------------
 
